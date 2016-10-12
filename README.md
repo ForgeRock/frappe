@@ -1,4 +1,4 @@
-frappé
+frappè
 ============
 ForgeRock Application Example for the CloudFoundry Service Broker combined with node-agent
 
@@ -8,7 +8,7 @@ This is a sample application that you can run locally or in a CloudFoundry PaaS.
 # Installation
 Clone this repo:
 
-```git clone```
+```git clone `https://github.com/ForgeRock/frappe.git``
 
 Change to the application directory
 
@@ -102,8 +102,27 @@ buildpack: node.js 1.5.15
 
 $
 ```
+Some environmental variables might be needed to adjust to the behaviour one wants. In case they are not set, there are some defaults, but here how you can set them up:
+```
+$ cf set-env frappe cdsso false
+$ cf set-env getProfiles true
+$ cf set-env noRedirect false
+.. etc...
+```
+You can see the set-env-example.sh content to see more environmental variables
+
+After setting up the environemntal variables you will need to restage
+
+```
+$ cf restage frappe
+```
+
+And ready!
+
+You can now access the urls described in the paragraphs abpve when deploying locally.
+
 ### Observations
-If you want the *frappe* application running in the same domain than the OpenAM, and you need to add that domain, and route in CLoudFoundry, then you might need to use these commands:
+If you want the *frappe* application running in the same domain than the OpenAM, and you need to add that domain, and route in CloudFoundry, then you might need to use these commands:
 
 To create an additional domain in your CF organization:
 ```
